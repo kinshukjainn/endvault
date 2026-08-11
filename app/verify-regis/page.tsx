@@ -273,17 +273,17 @@ export default function AuthPage() {
 
   // Material You Styling Variables
   const inputClass =
-    "w-full px-6 py-3 bg-gray-900 border-2 border-[#444444] text-[16px] text-white placeholder-[#8E918F] outline-none rounded-xl ";
-  const labelClass = "block text-[16px] font-medium text-white mb-2 pl-4";
+    "w-full px-6 py-2.5 bg-[#121212]  border-2 border-[#444444] text-[14px] text-white placeholder-[#8E918F] outline-none rounded-md ";
+  const labelClass = "block text-[16px] font-bold text-white mb-2 pl-4";
   const primaryButtonClass =
-    "w-full flex items-center justify-center gap-2 py-2 px-5 font-semibold text-[18px] bg-slate-400 hover:bg-slate-500 text-black rounded-2xl  cursor-pointer transition-all  disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100";
+    "w-full flex items-center justify-center gap-2 py-2 px-5 font-semibold text-[18px] bg-blue-800 hover:bg-blue-800 text-white rounded-full  cursor-pointer transition-all  disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100";
   const secondaryButtonClass =
-    "w-full flex items-center justify-center gap-2 py-2 px-3  font-medium text-[17px] cursor-pointer bg-green-700 text-white rounded-lg transition-all active:scale-95 disabled:opacity-50";
+    "w-full flex items-center justify-center gap-2 py-2 px-3  font-medium text-[17px] cursor-pointer bg-[#252525] text-white rounded-full transition-all active:scale-95 disabled:opacity-50";
 
   return (
-    <div className="grid pt-0 lg:pt-16 min-h-screen pt-20 grid-cols-1 lg:grid-cols-2 bg-[#161923] text-[#E2E2E2] selection:bg-[#A8C7FA] selection:text-[#041E49] ">
+    <div className="grid pt-0 lg:pt-16 min-h-screen pt-20 grid-cols-1 lg:grid-cols-2 bg-black text-[#E2E2E2] selection:bg-[#A8C7FA] selection:text-[#041E49] ">
       {/* LEFT PANEL: Branding & Benefits */}
-      <div className="relative hidden lg:flex flex-col justify-between p-12 xl:p-16 bg-[#161923]  overflow-hidden my-4 ml-4 ">
+      <div className="relative hidden lg:flex flex-col justify-between rounded-l-3xl shadow-md shadow-blue-400 p-12 xl:p-16 bg-[#141414]  overflow-hidden my-4 ml-4 ">
         <div className="relative z-10 flex flex-col gap-10">
           {/* Logo */}
           <div className="flex items-center gap-3">
@@ -349,14 +349,14 @@ export default function AuthPage() {
       </div>
 
       {/* RIGHT PANEL: Authentication Form */}
-      <div className="flex flex-col justify-center items-center w-full px-6 py-12 lg:px-12 bg-[#161923]">
+      <div className="flex flex-col justify-center items-center w-full px-6 py-12 lg:px-12 bg-black">
         <div className="w-full max-w-[420px]">
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center justify-center gap-3 mb-12">
             <span className="text-3xl font-medium tracking-tight text-[#E2E2E2] flex items-center gap-3">
               {APP_NAME}
               <span className="text-gray-600">{"/"}</span>
-              <span className="text-[17px] font-medium px-4 py-1.5  text-[#A8C7FA] border border-[#282A2C] rounded-full">
+              <span className="text-[17px] font-semibold px-4 py-1.5  text-[#A8C7FA] border border-[#282A2C] rounded-full">
                 Authentication
               </span>
             </span>
@@ -366,7 +366,7 @@ export default function AuthPage() {
           <motion.div layout className="mb-10 text-center sm:text-left">
             <motion.h2
               layout
-              className="text-5xl font-normal text-[#E2E2E2] mb-3"
+              className="text-2xl font-bold text-[#E2E2E2] mb-3"
             >
               {heading}
             </motion.h2>
@@ -388,7 +388,7 @@ export default function AuthPage() {
                 exit={{ opacity: 0, scale: 0.95, height: 0, marginBottom: 0 }}
                 className="mb-6 p-3  rounded-full flex items-start gap-3"
               >
-                <div className="mt-0.5 text-green-400 flex-shrink-0">
+                <div className="mt-0.5 text-blue-400 flex-shrink-0">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <p className="text-[15px] font-medium text-white leading-snug">
@@ -563,13 +563,13 @@ export default function AuthPage() {
                       ) : isSignUp ? (
                         "Create Account"
                       ) : (
-                        "Sign In"
+                        "Log In"
                       )}
                     </button>
 
                     <div className="relative flex items-center justify-center py-2">
                       <div className="absolute inset-0 flex items-center"></div>
-                      <div className="relative   text-[19px] font-medium bg-gray-900 p-2 rounded-lg border border-[#444444] text-white  tracking-wider">
+                      <div className="relative   text-[19px] font-bold text-white  tracking-wider">
                         or
                       </div>
                     </div>

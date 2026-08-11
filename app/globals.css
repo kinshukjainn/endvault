@@ -1,8 +1,9 @@
 @import "tailwindcss";
+
 body {
-  background: #161923;
+  background: black;
   color: white;
-  font-family: var(--font-open-sans), sans-serif;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 .heading-font {
@@ -95,7 +96,7 @@ body {
   border-radius: 9999px;
   font-size: 15px;
   font-weight: 500;
-  color: white;
+  color: rgb(173, 163, 234);
   white-space: nowrap;
   text-decoration: none;
   transition:
@@ -106,17 +107,17 @@ body {
 
 /* Base Colors (Matched to your mobile menu styling) */
 .btn {
-  background-color: #15803d; /* Tailwind green-700 */
+  background-color: black;
 }
 
 .koshabtn {
-  background-color: #1d4ed8; /* Tailwind blue-700 */
+  background-color: #000000; /* Tailwind blue-700 */
 }
 
 /* Hover State: Darkens the button so the glowing border pops */
 .btn:hover,
 .koshabtn:hover {
-  background-color: #161923; /* Matches your header background */
+  background-color: black; /* Matches your header background */
   color: white;
 }
 

@@ -9,7 +9,6 @@ import {
   User,
   Menu,
   X,
-  Layers,
   Users,
   BookOpen,
   GitBranch,
@@ -28,9 +27,8 @@ export default function Header() {
   const { isLoaded, isSignedIn } = useUser();
 
   const navItems = [
-    { name: "Architecture", href: "/architecture", icon: Layers },
-    { name: "About Us", href: "/about-us", icon: Users },
-    { name: "Docs", href: "/docs", icon: BookOpen },
+    { name: "About Creator", href: "/about-us", icon: Users },
+    { name: "Documentation", href: "/docs", icon: BookOpen },
     { name: "Logs", href: "/git-track", icon: GitBranch },
     { name: "Integrations", href: "/integrations", icon: Puzzle },
     { name: "Checker", href: "/checker", icon: Activity },
@@ -38,10 +36,10 @@ export default function Header() {
 
   // Material You / Pixel Styled Blocks
   const ctaBlock =
-    "group flex items-center gap-2 px-6 py-2.5 rounded-lg bg-yellow-500 text-black text-[15px] font-bold transition-all whitespace-nowrap shadow-sm transform hover:scale-[1.02] active:scale-95";
+    "group flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#141414] text-blue-200 shadow-md shadow-blue-400 text-[15px] border-2 border-blue-400 font-bold transition-all whitespace-nowrap shadow-sm transform hover:scale-[1.02] active:scale-95";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#161923] border-b border-[#282A2C]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-[#282A2C]">
       <div className="max-w-[1400px] mx-auto flex h-[72px] items-center justify-between px-4 md:px-6">
         {/* LEFT SECTION: Logo & Nav */}
         <div className="flex h-full flex-1 items-center overflow-hidden gap-2 md:gap-6">
@@ -61,7 +59,7 @@ export default function Header() {
             />
 
             {/* Text: Scales down slightly on mobile to prevent layout breaking */}
-            <span className="text-2xl sm:text-3xl font-normal tracking-tight text-white whitespace-nowrap">
+            <span className="text-2xl sm:text-3xl font-bold tracking-tight text-white whitespace-nowrap">
               Opaque
             </span>
           </Link>
@@ -76,15 +74,15 @@ export default function Header() {
                   href={item.href}
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className="relative px-4 py-2 flex items-center gap-2 text-[14px] font-medium text-white transition-colors z-10"
+                  className="relative px-4 py-2 flex items-center gap-2 text-[15px] font-medium text-white transition-colors z-10"
                 >
-                  <Icon className="w-4 h-4 text-green-500" />
+                  <Icon className="w-4 h-4 text-white" />
                   <span>{item.name}</span>
 
                   {hoveredItem === item.name && (
                     <motion.div
                       layoutId="header-hover-pill"
-                      className="absolute inset-0 border-b-2 border-green-500 -z-10"
+                      className="absolute inset-0 border-2 rounded-full border-blue-500 -z-10"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -136,7 +134,7 @@ export default function Header() {
         {/* MOBILE MENU TOGGLE */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="xl:hidden flex items-center justify-center p-2.5 rounded-lg cursor-pointer bg-[#161923] text-white transition-colors flex-shrink-0"
+          className="xl:hidden flex items-center justify-center p-2.5 rounded-full cursor-pointer bg-[#252525] text-white transition-colors flex-shrink-0"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -150,7 +148,7 @@ export default function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.2, 0, 0, 1] }}
-            className="xl:hidden overflow-hidden bg-[#161923] rounded-b-[32px] border-b-2 border-[#444444] absolute top-[72px] left-0 w-full z-40 shadow-2xl"
+            className="xl:hidden overflow-hidden bg-black rounded-b-[32px] border-b border-[#252525] absolute top-[72px] left-0 w-full z-40 "
           >
             <div className="flex flex-col p-4 max-h-[calc(100vh-80px)] overflow-y-auto">
               {/* TILES GRID */}
@@ -162,10 +160,12 @@ export default function Header() {
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="flex flex-col items-center justify-center gap-2 bg-[#1C1F2B] hover:bg-[#242836] border border-[#282A2C] rounded-2xl p-4 transition-all active:scale-95"
+                      className="flex flex-col items-center justify-center gap-2 bg-[#121212] hover:bg-[#161616]  rounded-4xl p-4 transition-all active:scale-95"
                     >
-                      <Icon className="w-6 h-6 text-green-500 mb-1" />
-                      <span className="text-[13px] font-semibold text-white tracking-wide text-center">
+                      <div className="px-2 py-2 bg-[#ff9100] rounded-full">
+                        <Icon className="w-6 h-6 text-black mb-1" />
+                      </div>
+                      <span className="text-[15px] font-semibold text-white tracking-wide text-center">
                         {item.name}
                       </span>
                     </Link>
@@ -179,7 +179,7 @@ export default function Header() {
               {isLoaded &&
                 (isSignedIn ? (
                   <div className="flex flex-col gap-4">
-                    <div className="bg-[#1C1F2B] p-3 rounded-2xl border border-[#282A2C] flex justify-center">
+                    <div className=" p-1 rounded-3xl  flex justify-center">
                       <UserProfileDropdown
                         variant="mobile"
                         onAction={() => setIsOpen(false)}
@@ -188,7 +188,7 @@ export default function Header() {
                     <a
                       href="https://kosha.cloudkinshuk.in"
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full p-3.5 bg-yellow-500 text-black text-[16px] font-bold rounded-2xl transition-transform active:scale-95"
+                      className="flex items-center justify-center gap-2 w-full p-3.5 bg-blue-800 text-white text-[16px] font-bold rounded-full transition-transform active:scale-95"
                     >
                       <IoCloudDoneSharp className="w-5 h-5" />
                       <span>Open Kosha</span>
@@ -199,14 +199,14 @@ export default function Header() {
                     <Link
                       href="/verify-regis"
                       onClick={() => setIsOpen(false)}
-                      className="flex flex-col items-center justify-center gap-1 p-3 text-[15px] font-bold text-white bg-green-700/90 rounded-2xl transition-all active:scale-95"
+                      className="flex flex-col items-center justify-center gap-1 p-3 text-[15px] font-bold text-white bg-green-700/90 rounded-full transition-all active:scale-95"
                     >
                       <User className="w-5 h-5 mb-1" />
                       <span>Sign In</span>
                     </Link>
                     <a
                       href="https://kosha.cloudkinshuk.in"
-                      className="flex flex-col items-center justify-center gap-1 p-3 text-[15px] font-bold text-white bg-blue-700/90 rounded-2xl transition-all active:scale-95"
+                      className="flex flex-col items-center justify-center gap-1 p-3 text-[15px] font-bold text-white bg-blue-700/90 rounded-full transition-all active:scale-95"
                     >
                       <IoCloudDoneSharp className="w-5 h-5 mb-1" />
                       <span>Open Kosha</span>

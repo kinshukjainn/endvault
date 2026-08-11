@@ -39,10 +39,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       <div className="relative">
         <svg
           viewBox="0 0 24 24"
-          className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-500"
+          className="pointer-events-none absolute left-1 top-1/2 h-5 w-5 -translate-y-1/2 text-white"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
         >
           <circle cx="11" cy="11" r="7" />
           <path d="m20 20-3-3" strokeLinecap="round" />
@@ -51,7 +51,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search docs"
-          className="w-full rounded-xl border border-neutral-800 bg-neutral-900/10  backdrop-blur-xs py-3 pl-8 pr-2 text-[15px] text-white  outline-none "
+          className="w-full  border-b-2 border-[#444444] bg-black py-3 pl-8 pr-2 text-[15px] text-white  outline-none "
         />
       </div>
 
@@ -63,7 +63,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             <div key={section.title}>
               <button
                 onClick={() => toggle(section.title)}
-                className="flex w-full items-center justify-between px-2.5 py-1/2 text-[15px] font-medium  tracking-wider text-white transition-colors  cursor-pointer"
+                className="flex w-full items-center justify-between bg-[#121212] px-2.5 py-2 rounded-full text-[15px] font-bold  tracking-wider text-white transition-colors  cursor-pointer"
               >
                 {section.title}
                 <svg
@@ -71,7 +71,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                   className={`h-4 w-4 transition-transform ${open ? "" : "-rotate-90"}`}
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth="5"
                 >
                   <path
                     d="m6 9 6 6 6-6"
@@ -91,10 +91,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                           href={`/docs/${item.slug}`}
                           aria-current={active ? "page" : undefined}
                           onClick={onNavigate}
-                          className={`block rounded-full px-2.5 py-1.5 text-[16px] transition-colors ${
+                          className={`block  px-2.5 py-1.5 text-[16px] rounded-xl transition-colors ${
                             active
-                              ? "  font-semibold text-green-500 "
-                              : "text-neutral-200 hover:underline"
+                              ? " p-2 border-l-15 border-blue-400  font-semibold text-blue-200 "
+                              : "text-gray-400 hover:text-white"
                           }`}
                         >
                           {item.title}
@@ -147,7 +147,7 @@ export function MobileDocsNav() {
     <>
       {/* Sticky Mobile Header */}
       <div
-        className="sticky z-40 -mx-4 flex items-center justify-between   bg-[#191623] border-b border-[#444444] px-4 py-3  sm:-mx-6 sm:px-6 md:hidden"
+        className="sticky z-40 -mx-4 flex items-center justify-between   bg-[#202020]/20 backdrop-blur-xs  mr-1.5 ml-1.5   rounded-full  px-4 py-3  sm:-mx-6 sm:px-6 md:hidden"
         style={{ top: "var(--header-h)" }}
       >
         <span className="text-lg font-medium text-neutral-100">
@@ -155,7 +155,7 @@ export function MobileDocsNav() {
         </span>
         <button
           onClick={() => setIsOpen(true)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl cursor-pointer  bg-green-800 text-neutral-100 transition-colors  hover:text-white"
+          className="flex h-10 w-10 items-center justify-center rounded-xl cursor-pointer  bg-[#121212] text-neutral-100 transition-colors  hover:text-white"
           aria-label="Open documentation menu"
         >
           <svg
@@ -187,12 +187,12 @@ export function MobileDocsNav() {
           />
 
           {/* Drawer Content */}
-          <div className="relative flex w-4/5 max-w-xs flex-col bg-[#161923]  shadow-2xl">
+          <div className="relative flex w-4/5 max-w-xs flex-col bg-black rounded-r-3xl mt-2 mb-2  shadow-lg shadow-[#252525]">
             <div className="flex items-center justify-between border-b border-neutral-800/60 px-4 py-3 sm:px-6">
-              <span className="text-3xl font-normal text-white">Menu</span>
+              <span className="text-xl font-bold text-white">Opaque Docs</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 bg-green-800 rounded-xl cursor-pointer text-neutral-100 hover:text-white"
+                className="p-2 bg-[#141414] rounded-full cursor-pointer text-neutral-100 hover:text-white"
               >
                 <svg
                   viewBox="0 0 24 24"

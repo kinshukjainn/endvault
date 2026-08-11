@@ -89,18 +89,18 @@ export default function PasswordDashboard() {
   const genColor = SCORE_COLORS[genScore];
 
   return (
-    <div className="w-full pt-20 max-w-4xl mx-auto p-6 bg-transparent text-gray-200 ">
+    <div className="w-full pt-20 max-w-4xl mx-auto p-6 bg-black text-gray-200 ">
       {/* Flat Tabs */}
       <div className="flex border-b border-gray-700 mb-8">
         <button
           className={`px-6 py-3 cursor-pointer text-sm font-bold ${
             mode === "analyze"
-              ? "border-b-2 border-green-500 text-green-500"
+              ? "border-b-2 border-white text-white"
               : "text-gray-500"
           }`}
           onClick={() => setMode("analyze")}
         >
-          ANALYSIS
+          Analysis
         </button>
         <button
           className={`px-6 py-3 cursor-pointer text-sm font-bold ${
@@ -124,13 +124,13 @@ export default function PasswordDashboard() {
             <div className="relative flex">
               <input
                 type={reveal ? "text" : "password"}
-                className="w-full bg-gray-900 border border-gray-700 p-2 rounded-md text-lg text-white outline-none"
+                className="w-full bg-[#141414]  p-3 rounded-2xl text-lg text-white outline-none"
                 value={pw}
                 onChange={(e) => setPw(e.target.value)}
                 placeholder="Enter password to evaluate..."
               />
               <button
-                className="absolute cursor-pointer right-4 top-4 text-gray-200"
+                className="absolute cursor-pointer right-4 top-4 text-gray-100"
                 onClick={() => setReveal(!reveal)}
               >
                 {reveal ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -138,23 +138,25 @@ export default function PasswordDashboard() {
             </div>
           </div>
 
-          <div className="border border-gray-700 rounded-lg p-6 bg-gray-900">
+          <div className=" rounded-2xl p-6 bg-[#141414]">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-green-400">
+              <span className=" font-semibold text-blue-200">
                 Security Index:{" "}
-                <strong className="text-white">
+                <strong className="text-white font-normal">
                   {pw ? result.label : "N/A"}
                 </strong>
               </span>
-              <span className="text-green-400">
+              <span className="text-blue-200 font-bold">
                 Entropy:{" "}
-                <strong className="text-white">
+                <strong className="text-white font-normal">
                   {result.entropyBits} bits
                 </strong>
               </span>
-              <span className="text-green-400">
+              <span className="text-blue-200 font-bold">
                 Crack Time:{" "}
-                <strong className="text-white">{result.crackTime}</strong>
+                <strong className="text-white font-normal">
+                  {result.crackTime}
+                </strong>
               </span>
             </div>
 
@@ -166,7 +168,7 @@ export default function PasswordDashboard() {
                   className={`flex-1 ${
                     i <= result.score
                       ? activeColor.split(" ")[1]
-                      : "bg-gray-400"
+                      : "bg-gray-400 rounded-full"
                   }`}
                 />
               ))}
@@ -175,7 +177,7 @@ export default function PasswordDashboard() {
 
           {/* Flat Logs */}
           {(result.warnings.length > 0 || result.suggestions.length > 0) && (
-            <div className="border border-gray-700 p-6 bg-gray-900 rounded-lg">
+            <div className=" p-6 bg-[#121212] rounded-2xl">
               <h3 className="text-sm font-bold text-gray-100 mb-4 uppercase">
                 Audit Logs
               </h3>
@@ -200,8 +202,8 @@ export default function PasswordDashboard() {
       {mode === "generate" && (
         <div className="flex flex-col gap-8">
           {/* Output Box */}
-          <div className="border border-gray-700 p-6 bg-gray-900 rounded-lg">
-            <label className="block text-md text-gray-100 mb-2">
+          <div className=" p-6 bg-[#121212] rounded-2xl">
+            <label className="block text-md text-gray-100 font-bold mb-2">
               Generated Credential
             </label>
             <div className="flex gap-4 mb-4">
@@ -209,28 +211,30 @@ export default function PasswordDashboard() {
                 type="text"
                 readOnly
                 value={generated.password}
-                className="w-full rounded-lg bg-blue-300 border border-gray-700 font-semibold p-1 text-lg  text-black outline-none"
+                className="w-full rounded-xl bg-[#252525] font-semibold p-2 text-lg  text-white outline-none"
               />
               <button
                 onClick={() => regenerate()}
-                className="bg-gray-800 border border-gray-700 px-3 py-1 rounded-lg text-white hover:bg-gray-700"
+                className="bg-[#444444]  px-3 py-1 rounded-full text-white"
               >
                 <RefreshCw size={20} />
               </button>
               <button
                 onClick={copy}
-                className="bg-blue-600 border border-blue-600 px-3 py-1 rounded-lg text-white hover:bg-blue-700"
+                className="bg-[#444444]  px-3 py-1 rounded-full font-bold text-white"
               >
                 {copied ? "Copied" : <Copy size={20} />}
               </button>
             </div>
 
-            <div className="flex gap-1 rounded-lg w-full h-2">
+            <div className="flex gap-1 rounded-full w-full h-2">
               {[0, 1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
                   className={`flex-1 ${
-                    i <= genScore ? genColor.split(" ")[1] : "bg-gray-800"
+                    i <= genScore
+                      ? genColor.split(" ")[1]
+                      : "bg-gray-800 rounded-full"
                   }`}
                 />
               ))}
@@ -241,8 +245,8 @@ export default function PasswordDashboard() {
           </div>
 
           {/* Simple Policy Controls */}
-          <div className="border border-gray-700 p-6 bg-gray-900">
-            <h3 className="text-sm font-bold text-gray-400 mb-6 uppercase">
+          <div className=" p-6 bg-[#141414] rounded-3xl">
+            <h3 className="text-sm font-bold text-gray-200 mb-6 uppercase">
               Parameters
             </h3>
 
@@ -262,7 +266,9 @@ export default function PasswordDashboard() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <span className="text-sm text-gray-400">Character Sets</span>
+              <span className="text-sm text-gray-200 font-bold">
+                Character Sets
+              </span>
               <div className="grid grid-cols-2 gap-4">
                 {[
                   ["lowercase", "Lower (a-z)"],

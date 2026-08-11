@@ -60,13 +60,13 @@ function pickChallenge(): number[] {
 
 // Material You Form Styles
 const inputClass =
-  "w-full px-6 py-4 bg-gray-900 border-2 border-[#444444] text-[16px] text-[#E2E2E2] placeholder-text-gray-600 outline-none rounded-lg transition-all duration-300";
+  "w-full px-6 py-4 bg-[#141414]  text-[16px] text-[#E2E2E2] placeholder-text-gray-600 outline-none rounded-2xl transition-all duration-300";
 const labelClass =
   "block text-[18px] font-medium text-white mb-2 pl-4 text-left w-full";
 const primaryBtn =
-  "w-full flex items-center justify-center gap-2 py-2 px-3 font-semibold text-[17px] bg-green-400  text-black rounded-lg cursor-pointer transition-all  disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full flex items-center justify-center gap-2 py-3 px-3 font-semibold text-[17px] bg-blue-800  text-white rounded-full cursor-pointer transition-all  disabled:opacity-50 disabled:cursor-not-allowed";
 const ghostBtn =
-  "w-full text-center text-[17px] font-semibold cursor-pointer text-black bg-green-400 py-2 rounded-lg transition-colors active:bg-[#282A2C]";
+  "w-full text-center text-[17px] font-semibold cursor-pointer text-white bg-[#252525] py-3 rounded-full transition-colors active:bg-[#282A2C]";
 
 type Step = "password" | "reveal" | "confirm";
 
@@ -145,14 +145,14 @@ export default function SetupScreen() {
   };
 
   return (
-    <div className="min-h-screen pt-20 flex items-center justify-center bg-[#161923] text-[#E2E2E2] px-4 sm:px-6 py-12 selection:bg-[#A8C7FA] selection:text-[#041E49] ">
+    <div className="min-h-screen pt-20 flex items-center justify-center bg-black text-[#E2E2E2] px-4 sm:px-6 py-12 selection:bg-[#A8C7FA] selection:text-[#041E49] ">
       <motion.div layout className="w-full max-w-[500px]">
         {/* Header */}
         <motion.div
           layout
           className="flex flex-col items-center text-center mb-8"
         >
-          <div className="w-16 h-16 rounded-3xl bg-green-700 flex items-center justify-center text-white mb-6">
+          <div className="w-16 h-16 rounded-3xl bg-[#121212] flex items-center justify-center text-white mb-6">
             {step === "password" ? (
               <KeyRound className="w-7 h-7" />
             ) : (
@@ -166,7 +166,7 @@ export default function SetupScreen() {
             <span
               className={
                 step === "password"
-                  ? "text-green-500 font-semibold p-2 border-2 border-green-500 rounded-xl "
+                  ? "text-blue-400 font-semibold p-2 border-2 border-blue-500 rounded-full "
                   : ""
               }
             >
@@ -176,7 +176,7 @@ export default function SetupScreen() {
             <span
               className={
                 step === "reveal"
-                  ? "text-green-500 font-semibold p-2 border-2 border-green-500 rounded-xl"
+                  ? "text-blue-400 font-semibold p-2 border-2 border-blue-500 rounded-full"
                   : ""
               }
             >
@@ -186,7 +186,7 @@ export default function SetupScreen() {
             <span
               className={
                 step === "confirm"
-                  ? "text-green-500 font-semibold p-2 border-2 border-green-500 rounded-xl"
+                  ? "text-blue-400 font-semibold p-2 border-2 border-blue-500 rounded-full"
                   : ""
               }
             >
@@ -203,7 +203,7 @@ export default function SetupScreen() {
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, height: 0, marginBottom: 0 }}
-              className="mb-6 p-4 w-full bg-red-500 rounded-[24px] text-[14px] text-[#F2B8B5] flex items-start gap-3"
+              className="mb-6 p-4 w-full bg-[#141414] rounded-[24px] text-[14px] text-white flex items-start gap-3"
             >
               <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" />
               <span className="leading-relaxed">{error}</span>
@@ -224,7 +224,7 @@ export default function SetupScreen() {
                 className="space-y-6"
               >
                 {/* Material Warning Tonal */}
-                <div className="p-5 rounded-[28px] bg-red-500  flex gap-4">
+                <div className="p-5 rounded-[28px] bg-red-500/50  flex gap-4">
                   <ShieldAlert className="w-6 h-6 text-white shrink-0 mt-0.5" />
                   <p className="text-[14px] text-white leading-relaxed">
                     Your master password encrypts everything and is never sent
@@ -357,12 +357,12 @@ export default function SetupScreen() {
                   {words.map((w, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 px-2 py-2  border-2 border-[#444444] rounded-lg"
+                      className="flex items-center gap-3 px-2 py-2  bg-[#141414] rounded-full"
                     >
-                      <span className="text-[15px] font-medium text-white w-4 text-right select-none">
+                      <span className="text-[15px] font-medium text-gray-300 w-4 text-right select-none">
                         {i + 1}
                       </span>
-                      <span className="text-[16px]  font-medium text-white">
+                      <span className="text-[16px]  font-medium text-gray-300">
                         {w}
                       </span>
                     </div>
@@ -396,7 +396,7 @@ export default function SetupScreen() {
                       type="checkbox"
                       checked={acknowledged}
                       onChange={(e) => setAcknowledged(e.target.checked)}
-                      className="appearance-none w-8 h-8 rounded-lg  border-2 border-white bg-white checked:bg-black checked:border-none transition-colors cursor-pointer"
+                      className="appearance-none w-8 h-8 rounded-full bg-[#444444] border border-gray-200 checked:bg-blue-800 checked:border-none transition-colors cursor-pointer"
                     />
                     {acknowledged && (
                       <Check className="absolute w-6 h-6 text-white pointer-events-none" />

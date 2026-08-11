@@ -21,13 +21,13 @@ import { useVault } from "./VaultProvider";
 
 // Minimal, flat styles matching the background
 const inputClass =
-  "w-full px-4 py-3 bg-transparent border-2 border-[#444444] text-[16px] text-white placeholder-[#5f6368] focus:outline-none rounded-xl transition-colors duration-200";
+  "w-full px-4 py-3 bg-[#141414]  text-[16px] text-white placeholder-[#5f6368] focus:outline-none rounded-2xl transition-colors duration-200";
 const labelClass =
   "block text-[16px] font-medium text-white mb-1.5 text-left w-full";
 const primaryBtn =
-  "w-full flex items-center justify-center gap-2 py-2 px-6 font-medium text-[16px] bg-red-500  text-white rounded-2xl cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full flex items-center justify-center gap-2 py-2 px-6 font-medium text-[16px] bg-blue-800  text-white rounded-full cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
 const ghostBtn =
-  "w-full text-center text-[14px] font-medium text-[#8E918F] hover:text-[#E2E2E2] py-2 transition-colors disabled:opacity-50";
+  "w-full text-center text-[14px] font-bold text-[#8E918F] cursor-pointer hover:text-[#E2E2E2] py-2 transition-colors disabled:opacity-50";
 
 export default function UnlockScreen() {
   const { unlock, unlockWithRecovery } = useVault();
@@ -93,7 +93,7 @@ export default function UnlockScreen() {
   };
 
   return (
-    <div className="min-h-screen pt-20 flex items-center justify-center bg-[#161923] text-[#E2E2E2] px-6 py-12 selection:bg-[#A8C7FA] selection:text-[#041E49]">
+    <div className="min-h-screen pt-20 flex items-center justify-center bg-black text-[#E2E2E2] px-6 py-12 selection:bg-[#A8C7FA] selection:text-[#041E49]">
       <div className="w-full max-w-[380px] flex flex-col items-center text-center">
         {/* Minimal Header */}
         <div className="flex flex-col items-center mb-8">
@@ -108,7 +108,7 @@ export default function UnlockScreen() {
               <ShieldCheck className="w-8 h-8" />
             )}
           </div>
-          <h1 className="text-3xl font-medium text-white tracking-tight">
+          <h1 className="text-3xl font-bold text-white tracking-tight">
             {mode === "unlock" ? "Unlock Vault" : "Vault Recovery"}
           </h1>
           <p className="text-[14px] text-[#8E918F] mt-1.5">

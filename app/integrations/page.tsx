@@ -312,12 +312,12 @@ export default function IntegrationsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#161923] text-[#F3F4F6] pt-24 pb-32  selection:bg-[#0060df] selection:text-white">
+    <div className="min-h-screen bg-black text-[#F3F4F6] pt-24 pb-32  selection:bg-[#0060df] selection:text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
         {/* ── HEADER ── */}
         <header className="max-w-3xl space-y-6">
           <div className="flex flex-col gap-4">
-            <div className="w-14 h-14 rounded-full bg-[#1e2230] border border-[#2e3447] flex items-center justify-center text-[#F3F4F6]">
+            <div className="w-14 h-14 rounded-full bg-[#141414] flex items-center justify-center text-[#F3F4F6]">
               <Puzzle className="w-7 h-7" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
@@ -356,7 +356,7 @@ export default function IntegrationsPage() {
               placeholder="Search applications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#1e2230] text-[#F3F4F6] placeholder-[#6b7280] pl-12 pr-4 py-3 rounded-xl border border-[#2e3447] outline-none focus:bg-[#252a3b] focus:border-[#0060df] focus:ring-1 focus:ring-[#0060df] transition-all duration-150 ease-in-out text-[16px]"
+              className="w-full bg-[#141414] text-white placeholder-[#6b7280] pl-12 pr-4 py-3 rounded-full outline-none  transition-all duration-150 ease-in-out text-[18px]"
             />
           </div>
 
@@ -369,10 +369,10 @@ export default function IntegrationsPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat as Category | "All")}
-                className={`px-5 py-2.5 rounded-lg text-[14px] font-medium whitespace-nowrap transition-colors duration-150 ease-in-out flex-shrink-0 border ${
+                className={`px-5 py-2.5 rounded-full text-[14px]  whitespace-nowrap transition-colors duration-150 ease-in-out flex-shrink-0  ${
                   activeCategory === cat
-                    ? "bg-[#0060df] border-[#0060df] text-white"
-                    : "bg-[#1e2230] border-[#2e3447] text-[#a0a6b8] hover:bg-[#252a3b] hover:text-[#F3F4F6]"
+                    ? "bg-blue-800 font-bold text-white"
+                    : "bg-[#141414] font-medium  text-white"
                 }`}
               >
                 {cat}
@@ -383,11 +383,11 @@ export default function IntegrationsPage() {
 
         {/* ── RESULTS GRID ── */}
         {filteredApps.length === 0 ? (
-          <div className="py-24 px-6 border border-[#2e3447] bg-[#1e2230] rounded-2xl text-center flex flex-col items-center justify-center w-full">
-            <div className="w-14 h-14 bg-[#252a3b] rounded-xl flex items-center justify-center mb-5 text-[#6b7280]">
-              <Search className="w-7 h-7" />
+          <div className="py-24 px-6   text-center flex flex-col items-center justify-center w-full">
+            <div className="w-14 h-14 bg-[#141414] rounded-full flex items-center justify-center mb-5 text-[#6b7280]">
+              <Search className="w-7 h-7 text-white" />
             </div>
-            <p className="text-[#F3F4F6] font-medium text-lg">
+            <p className="text-[#F3F4F6] font-medium text-xl">
               No services found
             </p>
             <p className="text-[#a0a6b8] text-[15px] mt-1">
@@ -401,10 +401,10 @@ export default function IntegrationsPage() {
               return (
                 <div
                   key={app.id}
-                  className="group flex flex-col items-center justify-center gap-4 p-5 bg-[#1e2230] border border-[#2e3447] hover:border-[#0060df]/50 hover:bg-[#252a3b] transition-all duration-150 ease-in-out rounded-xl cursor-default"
+                  className="group flex flex-col items-center justify-center gap-4 p-5 bg-[#141414]  transition-all duration-150 ease-in-out rounded-4xl cursor-default"
                 >
-                  <div className="w-14 h-14 bg-[#252a3b] group-hover:bg-[#2e3447] rounded-lg flex items-center justify-center transition-colors duration-150">
-                    <Icon className="w-7 h-7 text-[#a0a6b8] group-hover:text-white transition-colors duration-150" />
+                  <div className="w-14 h-14   rounded-full flex items-center justify-center transition-colors duration-150">
+                    <Icon className="w-10 h-10 text-white transition-colors duration-150" />
                   </div>
                   <div className="text-center space-y-1">
                     <h3 className="text-[#F3F4F6] text-[15px] font-semibold tracking-tight">

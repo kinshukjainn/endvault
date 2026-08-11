@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import {
   GitCommit,
   Search,
   Filter,
   RefreshCw,
-  TerminalSquare,
   Clock,
   User,
   ExternalLink,
@@ -217,34 +215,10 @@ export default function ChangelogTracker() {
       : "N/A";
 
   const inputClass =
-    "bg-blue-300 text-zinc-900 placeholder-gray-800 border border-zinc-800 px-4 py-2 rounded-lg font-medium outline-none  transition-all text-sm w-full sm:w-auto";
+    "bg-[#141414] text-zinc-100 placeholder-gray-400  px-4 py-3 rounded-2xl font-medium outline-none  transition-all text-sm w-full sm:w-auto";
 
   return (
-    <div className="min-h-screen bg-[#161923] text-zinc-300  selection:bg-zinc-800 selection:text-white pb-32">
-      {/* ── TOP NAVIGATION BAR ── */}
-      <div className="sticky top-0 z-10 bg-black/80 backdrop-blur-md border-b border-zinc-800/80 px-6 py-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sm text-zinc-400 font-medium">
-            <TerminalSquare className="w-4 h-4" />
-            <span>Changelog</span>
-            <span className="text-zinc-700">/</span>
-            <Link href="/" className="hover:text-zinc-100 transition-colors">
-              {GITHUB_CONFIG.repository}
-            </Link>
-            <span className="text-zinc-700">/</span>
-            <span className="text-zinc-100">Commits</span>
-          </div>
-
-          <Link
-            href="/git-track/tree"
-            className="flex items-center gap-1.5 text-xs  text-zinc-400 hover:text-zinc-100 transition-colors  tracking-wider"
-          >
-            <GitBranch className="w-3.5 h-3.5" />
-            <span>View Tree</span>
-          </Link>
-        </div>
-      </div>
-
+    <div className="min-h-screen pt-10 bg-black text-zinc-300  selection:bg-zinc-800 selection:text-white pb-32">
       <div className="max-w-5xl mx-auto px-6 pt-12 space-y-8">
         {/* ── HEADER ── */}
         <header>
@@ -313,7 +287,7 @@ export default function ChangelogTracker() {
                   Search
                 </span>
                 <div className="relative">
-                  <Search className="absolute left-3 top-2.5 w-4 h-4 text-black" />
+                  <Search className="absolute left-3 top-3 w-4 h-4 text-white" />
                   <input
                     type="text"
                     placeholder="Search messages or SHA..."
@@ -368,7 +342,7 @@ export default function ChangelogTracker() {
                   setAuthorFilter("all");
                   setTypeFilter("all");
                 }}
-                className="h-[38px] px-5 bg-green-400 text-black text-sm font-medium rounded-md cursor-pointer  hover:bg-white transition-colors w-full sm:w-auto mt-2 sm:mt-0"
+                className="h-[38px] px-5 bg-blue-400 text-black text-sm font-medium rounded-full cursor-pointer  transition-colors w-full sm:w-auto mt-2 sm:mt-0"
               >
                 Clear
               </button>

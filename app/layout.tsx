@@ -13,7 +13,7 @@ import {
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ConditionalFooter from "./components/ConditionalFooter"; // <-- Import the new wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +78,7 @@ export const metadata: Metadata = {
     icon: "logo/logog.png",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -93,7 +94,8 @@ export default function RootLayout({
         <body suppressHydrationWarning className="min-h-full flex flex-col">
           <Header />
           {children}
-          <Footer />
+          {/* Replace the standard Footer with the Conditional Footer */}
+          <ConditionalFooter />
         </body>
       </html>
     </ClerkProvider>
