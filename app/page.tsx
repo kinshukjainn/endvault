@@ -190,13 +190,13 @@ export default function Home() {
                     className="flex flex-col sm:flex-row items-center gap-4"
                   >
                     <Link
-                      href="/sign-up"
+                      href="/verify-regis"
                       className="w-full sm:w-auto px-8 py-3.5 bg-[#1A73E8] hover:bg-[#1557B0] text-white text-[1rem] font-medium rounded-full transition-colors flex items-center justify-center shadow-sm"
                     >
                       Get started for free
                     </Link>
                     <Link
-                      href="#features"
+                      href="/docs"
                       className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#747775] hover:bg-gray-50 text-[#1A73E8] text-[1rem] font-medium rounded-full transition-colors flex items-center justify-center"
                     >
                       Learn how it works
@@ -337,7 +337,7 @@ export default function Home() {
                   className="flex flex-col items-center justify-center space-y-6"
                 >
                   <Link
-                    href="/sign-up"
+                    href="/verify-regis"
                     className="px-8 py-4 bg-[#1A73E8] hover:bg-[#1557B0] text-white text-lg font-medium rounded-full transition-colors shadow-sm transform hover:-translate-y-0.5"
                   >
                     Create your free account
