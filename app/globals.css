@@ -1,9 +1,22 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* Default: Light Mode */
 body {
-  background: black;
-  color: white;
-  font-family: var(--font-roboto), sans-serif;
+  background-color: #ffffff;
+  color: #171717; /* Dark gray/almost black for readable text */
+  font-family: var(--font-inter), sans-serif;
+
+  /* Adds a smooth fade effect when you click the theme toggle */
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+/* Dark Mode (next-themes applies the .dark class) */
+.dark body {
+  background-color: #000000;
+  color: #f3f4f6; /* Light gray/white text for dark mode */
 }
 
 .heading-font {

@@ -17,6 +17,7 @@ const config: Config = {
         geist: "var(--font-geist-mono) , monospaced",
         plusJakarta: "var(--font-plus-jakarta) , sans-serif",
         publicSans: "var(--font-public-sans) , sans-serif",
+        inter: "var(--font-inter) , sans-serif",
         roboto: "var(--font-roboto) , sans-serif",
         poppins: "var(--font-poppins) , sans-serif",
       },

@@ -69,8 +69,9 @@ const BLANK: FormState = {
 
 // Utilitarian, flat CSS classes
 const inputClass =
-  "w-full px-3 py-2 bg-[#252525]  text-[15px] text-white placeholder-[#737373] focus:outline-none rounded-xl transition-colors";
-const labelClass = "block text-[15px] font-medium text-white mb-1.5";
+  "w-full px-3 py-2 bg-gray-200 dark:bg-[#252525]  text-[15px] text-black dark:text-white dark:placeholder-[#737373] placeholder-gray-700 focus:outline-none rounded-2xl transition-colors";
+const labelClass =
+  "block text-[15px] font-medium dark:text-white text-black mb-1.5";
 const primaryBtn =
   "w-full flex items-center justify-center gap-2 py-2 px-4 font-medium text-[14px] bg-blue-800 text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
 
@@ -245,32 +246,32 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-10 text-[#FBFBFE] selection:bg-[#0060DF] selection:text-white pb-20 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-black pt-10 text-black dark:text-[#FBFBFE] selection:bg-[#0060DF] selection:text-white pb-20 overflow-x-hidden">
       {/* Structural Header */}
-      <header className="sticky top-0 z-20 pt-10 bg-black">
+      <header className="sticky top-0 z-20 pt-10 bg-white dark:bg-black">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3 w-full md:w-auto md:flex-1">
             <div className="relative flex-1 md:max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black dark:text-green-500" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search..."
-                className="w-full pl-9 pr-3 py-2 bg-[#141414] text-[17px] text-white placeholder-gray-600  focus:outline-none rounded-full transition-colors"
+                className="w-full pl-9 pr-3 py-2 bg-gray-300 dark:bg-[#141414] text-[17px] text-black dark:text-white dark:placeholder-gray-600 placeholder-gray-700  focus:outline-none rounded-full transition-colors"
               />
             </div>
 
             <button
               onClick={lock}
               title="Lock vault"
-              className="px-2 py-2 bg-[#252525] cursor-pointer text-white rounded-full transition-colors flex-shrink-0"
+              className="px-2 py-2 dark:bg-[#252525] bg-gray-300 cursor-pointer text-black dark:text-white rounded-full transition-colors flex-shrink-0"
             >
               <Lock className="w-6 h-6" />
             </button>
 
             <button
               onClick={openAdd}
-              className="px-2 py-2 bg-blue-800 cursor-pointer text-white rounded-full transition-colors flex-shrink-0 flex md:hidden items-center justify-center"
+              className="px-2 py-2 dark:bg-blue-400 dark:text-black bg-blue-800 cursor-pointer text-white rounded-full transition-colors flex-shrink-0 flex md:hidden items-center justify-center"
             >
               <Plus className="w-6 h-6" />
             </button>
@@ -288,7 +289,7 @@ export default function Dashboard() {
                   className={`px-3 py-1.5 text-[15px] font-medium rounded-full whitespace-nowrap transition-colors  cursor-pointer flex-shrink-0 ${
                     filter === f.key
                       ? "bg-blue-800 text-white"
-                      : "bg-transparent text-[#AEADC8] border-transparent hover:text-white "
+                      : "dark:text-[#AEADC8]  dark:hover:text-white text-gray-800 hover:text-black "
                   }`}
                 >
                   {f.label}
@@ -474,15 +475,15 @@ export default function Dashboard() {
 
             <motion.div
               {...fastFade}
-              className="relative w-full max-w-[480px] bg-[#141414]  rounded-4xl shadow-2xl flex flex-col max-h-[80vh]"
+              className="relative w-full max-w-[480px] dark:bg-[#141414] bg-white  rounded-4xl shadow-2xl flex flex-col max-h-[80vh]"
             >
               <div className="flex items-center justify-between p-4 rounded-b-2xl">
-                <h2 className="text-[18px] font-bold text-[#FBFBFE]">
+                <h2 className="text-[18px] font-bold dark:text-[#FBFBFE] text-black">
                   {form.id ? "Edit Item" : "New Item"}
                 </h2>
                 <button
                   onClick={closeModal}
-                  className="p-1 hover:bg-[#2B2A33] rounded-full cursor-pointer text-white transition-colors"
+                  className="p-1 dark:hover:bg-[#2B2A33] rounded-full cursor-pointer text-black hover:bg-gray-200 dark:text-white transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -490,7 +491,7 @@ export default function Dashboard() {
 
               <div className="p-4 overflow-y-auto space-y-4">
                 {formError && (
-                  <div className="p-3 bg-[#E22850]/10 border border-[#E22850]/50 rounded text-[13px] text-[#FFB3B3]">
+                  <div className="p-3 dark:bg-[#141414]/10 dark:border dark:border-[#444444]/50 rounded text-[13px] dark:text-[#FFB3B3] text-black bg-gray-200 border-none">
                     {formError}
                   </div>
                 )}
@@ -643,7 +644,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="p-4 border-t border-[#2B2A33] bg-[#1C1B22] rounded-b-md">
+              <div className="p-4 bg-gray-100 dark:bg-[#1C1B22] rounded-b-4xl">
                 <button onClick={save} disabled={saving} className={primaryBtn}>
                   {saving ? (
                     <FaSpinner className="animate-spin w-4 h-4" />

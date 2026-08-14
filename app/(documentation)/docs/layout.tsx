@@ -11,7 +11,7 @@ export default function DocsLayout({
 }) {
   return (
     <div
-      className="min-h-screen bg-black text-neutral-200"
+      className="min-h-screen dark:bg-black dark:text-neutral-200 bg-white text-black"
       style={
         {
           "--header-h": HEADER_HEIGHT,
@@ -24,7 +24,7 @@ export default function DocsLayout({
         <MobileDocsNav />
 
         <aside
-          className="sticky hidden h-[calc(100vh-var(--header-h))] w-56 shrink-0 overflow-y-auto border-r border-neutral-800/60 py-8 pr-4 md:block lg:w-64"
+          className="sticky hidden h-[calc(100vh-var(--header-h))] w-56 shrink-0 overflow-y-auto  py-3 pr-2 md:block lg:w-64"
           // This keeps it pinned exactly beneath the header when you scroll
           style={{ top: "var(--header-h)" }}
         >

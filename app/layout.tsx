@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   Geist,
   Geist_Mono,
+  Inter,
   Open_Sans,
   Plus_Jakarta_Sans,
   Poppins,
@@ -14,6 +15,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./components/Header";
 import ConditionalFooter from "./components/ConditionalFooter"; // <-- Import the new wrapper
+import { ThemeProvider } from "./components/providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +60,13 @@ const roboto = Roboto({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -89,13 +98,16 @@ export default function RootLayout({
       <html
         lang="en"
         data-google-analytics-opt-out=""
-        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${staatliches.variable}  ${poppins.variable} ${publicSans.variable} ${plusJakarta.variable} ${roboto.variable} ${ubuntu.variable} h-full antialiased`}
+        suppressHydrationWarning
+        className={`${geistSans.variable} ${inter.variable} ${geistMono.variable} ${openSans.variable} ${staatliches.variable}  ${poppins.variable} ${publicSans.variable} ${plusJakarta.variable} ${roboto.variable} ${ubuntu.variable} h-full antialiased`}
       >
         <body suppressHydrationWarning className="min-h-full flex flex-col">
-          <Header />
-          {children}
-          {/* Replace the standard Footer with the Conditional Footer */}
-          <ConditionalFooter />
+          <ThemeProvider>
+            <Header />
+            {children}
+            {/* Replace the standard Footer with the Conditional Footer */}
+            <ConditionalFooter />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

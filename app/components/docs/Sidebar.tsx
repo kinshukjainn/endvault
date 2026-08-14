@@ -39,7 +39,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       <div className="relative">
         <svg
           viewBox="0 0 24 24"
-          className="pointer-events-none absolute left-1 top-1/2 h-5 w-5 -translate-y-1/2 text-white"
+          className="pointer-events-none absolute left-1 top-1/2 h-5 w-5 -translate-y-1/2 dark:text-white text-black"
           fill="none"
           stroke="currentColor"
           strokeWidth="3"
@@ -51,7 +51,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search docs"
-          className="w-full  border-b-2 border-[#444444] bg-black py-3 pl-8 pr-2 text-[15px] text-white  outline-none "
+          className="w-full  rounded-full dark:bg-[#141414] bg-gray-300 placeholder-gray-800 dark:placeholder-gray-400 py-3 pl-8 pr-2 text-[15px] dark:text-white text-black  outline-none "
         />
       </div>
 
@@ -63,7 +63,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             <div key={section.title}>
               <button
                 onClick={() => toggle(section.title)}
-                className="flex w-full items-center justify-between bg-[#121212] px-2.5 py-2 rounded-full text-[15px] font-bold  tracking-wider text-white transition-colors  cursor-pointer"
+                className="flex w-full items-center justify-between dark:bg-[#121212] bg-gray-300 px-2.5 py-1.5 rounded-full text-[15px] font-bold  tracking-wider dark:text-white text-black transition-colors  cursor-pointer"
               >
                 {section.title}
                 <svg
@@ -93,8 +93,8 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                           onClick={onNavigate}
                           className={`block  px-2.5 py-1.5 text-[16px] rounded-xl transition-colors ${
                             active
-                              ? " p-2 border-l-15 border-blue-400  font-semibold text-blue-200 "
-                              : "text-gray-400 hover:text-white"
+                              ? " p-2 border-l-15 dark:border-blue-400 dark:border-blue-800  font-semibold text-blue-800 dark:text-blue-200 "
+                              : "text-gray-900 dark:text-gray-200 dark:hover:text-white hover:font-bold"
                           }`}
                         >
                           {item.title}
@@ -147,15 +147,15 @@ export function MobileDocsNav() {
     <>
       {/* Sticky Mobile Header */}
       <div
-        className="sticky z-40 -mx-4 flex items-center justify-between   bg-[#202020]/20 backdrop-blur-xs  mr-1.5 ml-1.5   rounded-full  px-4 py-3  sm:-mx-6 sm:px-6 md:hidden"
+        className="sticky z-40 -mx-4 flex items-center justify-between   dark:bg-[#202020]/20 bg-white/20 backdrop-blur-xs  mr-2 ml-2 mt-2    rounded-full  px-4 py-2  sm:-mx-6 sm:px-6 md:hidden"
         style={{ top: "var(--header-h)" }}
       >
-        <span className="text-lg font-medium text-neutral-100">
+        <span className="text-lg font-semibold text-neutral-900 dark:text-white">
           Opaque Documentation/Blogs
         </span>
         <button
           onClick={() => setIsOpen(true)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl cursor-pointer  bg-[#121212] text-neutral-100 transition-colors  hover:text-white"
+          className="flex h-10 w-10 items-center justify-center rounded-full cursor-pointer  bg-[#121212] text-neutral-100 transition-colors  hover:text-white"
           aria-label="Open documentation menu"
         >
           <svg
@@ -182,14 +182,16 @@ export function MobileDocsNav() {
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/10 backdrop-blur-xs "
+            className="absolute inset-0 dark:bg-black bg-white/20 backdrop-blur-xs "
             onClick={() => setIsOpen(false)}
           />
 
           {/* Drawer Content */}
-          <div className="relative flex w-4/5 max-w-xs flex-col bg-black rounded-r-3xl mt-2 mb-2  shadow-lg shadow-[#252525]">
-            <div className="flex items-center justify-between border-b border-neutral-800/60 px-4 py-3 sm:px-6">
-              <span className="text-xl font-bold text-white">Opaque Docs</span>
+          <div className="relative flex w-4/5 max-w-xs flex-col dark:bg-black bg-white rounded-r-3xl mt-2 mb-2  shadow-lg dark:shadow-[#252525] shadow-blue-200">
+            <div className="flex items-center justify-between  px-4 py-3 sm:px-6">
+              <span className="text-xl font-bold text-black dark:text-white">
+                Opaque Docs
+              </span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-2 bg-[#141414] rounded-full cursor-pointer text-neutral-100 hover:text-white"

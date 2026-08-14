@@ -28,60 +28,63 @@ function omitNode<T extends object>(props: T): Omit<T, "node"> {
 const components: Components = {
   h1: (p) => (
     <h1
-      className="mt-10 scroll-mt-28 text-2xl font-bold tracking-tight text-white md:mt-12 md:text-3xl"
+      className="mt-10 scroll-mt-28 text-2xl font-bold tracking-tight dark:text-white text-black md:mt-12 md:text-3xl"
       {...omitNode(p)}
     />
   ),
   h2: (p) => (
     <h2
-      className="mt-10 scroll-mt-28 border-b border-neutral-800 pb-2 text-2xl font-semibold text-white md:mt-12 md:text-2xl"
+      className="mt-10 scroll-mt-28 dark:border-b dark:border-neutral-800 border-b border-nuetral-400 pb-2 text-2xl font-semibold dark:text-white text-black md:mt-12 md:text-2xl"
       {...omitNode(p)}
     />
   ),
   h3: (p) => (
     <h3
-      className="mt-8 scroll-mt-28 text-lg font-semibold text-white md:text-xl"
+      className="mt-8 scroll-mt-28 text-lg font-semibold dark:text-white text-black md:text-xl"
       {...omitNode(p)}
     />
   ),
   p: (p) => (
     <p
-      className="mt-4 break-words text-[18px] leading-7 text-neutral-300"
+      className="mt-4 break-words text-[18px] leading-7 text-black dark:text-neutral-300"
       {...omitNode(p)}
     />
   ),
   a: (p) => (
     <a
-      className="font-medium text-white underline decoration-neutral-600 underline-offset-4 transition-colors hover:decoration-white"
+      className="font-medium dark:text-white text-black underline dark:decoration-neutral-600 decoration-nuetral-800 underline-offset-4 transition-colors hover:decoration-white"
       {...omitNode(p)}
     />
   ),
   ul: (p) => (
     <ul
-      className="mt-4 list-disc space-y-2 pl-6 text-[18px] leading-7 text-neutral-300 marker:text-neutral-600"
+      className="mt-4 list-disc space-y-2 pl-6 text-[18px] leading-7 text-nuetral-800 dark:text-neutral-300 marker:text-nuetral-800 dark:marker:text-neutral-300"
       {...omitNode(p)}
     />
   ),
   ol: (p) => (
     <ol
-      className="mt-4 list-decimal space-y-2 pl-6 text-[18px] leading-7 text-neutral-300 marker:text-neutral-500"
+      className="mt-4 list-decimal space-y-2 pl-6 text-[18px] leading-7 text-nuetral-900 dark:text-neutral-300 marker:text-neutral-900 dark:marker:text-neutral-500"
       {...omitNode(p)}
     />
   ),
   li: (p) => <li className="pl-1" {...omitNode(p)} />,
   strong: (p) => (
-    <strong className="font-semibold text-white" {...omitNode(p)} />
+    <strong
+      className="font-semibold text-black dark:text-white"
+      {...omitNode(p)}
+    />
   ),
   blockquote: (p) => (
     <blockquote
-      className="my-6 border-l-2 border-neutral-700 pl-4 text-neutral-400"
+      className="my-6 border-l-2 dark:border-blue-700 border-blue-800 pl-4 text-neutral-400"
       {...omitNode(p)}
     />
   ),
   hr: () => <hr className="my-10 border-neutral-800" />,
   pre: (p) => (
     <pre
-      className="mt-5 max-w-full overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-900 p-4 text-[18px] leading-relaxed"
+      className="mt-5 max-w-full overflow-x-auto rounded-xl dark:bg-neutral-900 bg-gray-300 p-4 text-[18px] leading-relaxed"
       {...omitNode(p)}
     />
   ),
@@ -95,7 +98,7 @@ const components: Components = {
       );
     return (
       <code
-        className="break-words rounded-md bg-neutral-800 px-1.5 py-0.5 text-[16px] text-neutral-200"
+        className="break-words rounded-md dark:bg-neutral-800 bg-blue-300 px-1.5 py-0.5 text-[16px] dark:text-neutral-200 text-neutral-900"
         {...omitNode(rest)}
       >
         {children}
@@ -103,27 +106,29 @@ const components: Components = {
     );
   },
   table: (p) => (
-    <div className="my-6 block w-full max-w-full overflow-x-auto rounded-lg border border-neutral-800">
+    <div className="my-6 block w-full max-w-full overflow-x-auto rounded-lg border border-neutral-800 dark:border dark:border-gray-400">
       <table className="w-full border-collapse text-[18px]" {...omitNode(p)} />
     </div>
   ),
-  thead: (p) => <thead className="bg-neutral-900" {...omitNode(p)} />,
+  thead: (p) => (
+    <thead className="dark:bg-neutral-900 bg-blue-400" {...omitNode(p)} />
+  ),
   th: (p) => (
     <th
-      className="whitespace-nowrap border-b border-neutral-800 px-4 py-2.5 text-left font-semibold text-white"
+      className="whitespace-nowrap  px-4 py-2.5 text-left font-semibold text-black dark:text-white"
       {...omitNode(p)}
     />
   ),
   td: (p) => (
     <td
-      className="border-b border-neutral-800/60 px-4 py-2.5 text-neutral-300"
+      className="dark:border-b dark:border-neutral-800/60 border-b border-neutral-500/60 px-4 py-2.5 text-neutral-900 dark:text-neutral-300"
       {...omitNode(p)}
     />
   ),
   img: (p) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className="my-6 h-auto w-full rounded-lg border border-neutral-800 object-cover sm:object-contain"
+      className="my-6 h-auto w-full rounded-lg  object-cover sm:object-contain"
       alt=""
       {...omitNode(p)}
     />
@@ -139,11 +144,11 @@ export default async function DocPage({ params }: Props) {
     <article className="min-w-0 max-w-full overflow-hidden px-1 sm:px-0">
       {doc.meta.title && (
         <header className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight dark:text-white text-black md:text-4xl">
             {doc.meta.title}
           </h1>
           {doc.meta.description && (
-            <p className="mt-3 text-[15px] text-neutral-400 sm:text-base">
+            <p className="mt-3 text-[15px] dark:text-neutral-400 text-neutral-800 sm:text-base">
               {doc.meta.description}
             </p>
           )}

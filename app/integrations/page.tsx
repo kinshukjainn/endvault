@@ -312,19 +312,19 @@ export default function IntegrationsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-[#F3F4F6] pt-24 pb-32  selection:bg-[#0060df] selection:text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-[#F3F4F6] pt-24 pb-32 selection:bg-blue-200 dark:selection:bg-[#0060df] selection:text-blue-900 dark:selection:text-white transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
         {/* ── HEADER ── */}
         <header className="max-w-3xl space-y-6">
           <div className="flex flex-col gap-4">
-            <div className="w-14 h-14 rounded-full bg-[#141414] flex items-center justify-center text-[#F3F4F6]">
+            <div className="w-14 h-14 rounded-full bg-white dark:bg-[#141414] border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none flex items-center justify-center text-gray-800 dark:text-[#F3F4F6] transition-colors">
               <Puzzle className="w-7 h-7" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
               Supported Integrations
             </h1>
           </div>
-          <p className="text-[#a0a6b8] text-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-[#a0a6b8] text-lg leading-relaxed">
             Opaque provides end-to-end encrypted credential storage for the
             tools you use every day. Below are the natively recognized
             environments for custom autofill, metadata mapping, and icon
@@ -332,10 +332,10 @@ export default function IntegrationsPage() {
           </p>
 
           {/* Pragmatic Warning Card */}
-          <div className="mt-4 p-5 md:p-6 bg-[#2a221b] rounded-xl border border-[#d97706]/30 flex items-start gap-4">
-            <Info className="w-6 h-6 text-[#fbbf24] flex-shrink-0 mt-0.5" />
-            <p className="text-[#fcd34d] text-[15px] leading-relaxed">
-              <span className="font-semibold block mb-1 text-white">
+          <div className="mt-4 p-5 md:p-6 bg-yellow-50 dark:bg-[#2a221b] rounded-xl border border-yellow-200 dark:border-[#d97706]/30 flex items-start gap-4 transition-colors">
+            <Info className="w-6 h-6 text-yellow-600 dark:text-[#fbbf24] flex-shrink-0 mt-0.5" />
+            <p className="text-yellow-800 dark:text-[#fcd34d] text-[15px] leading-relaxed">
+              <span className="font-bold block mb-1 text-yellow-900 dark:text-white">
                 Opaque stores account credentials only
               </span>
               Passwords, email IDs, and login details for your accounts. Please
@@ -350,13 +350,13 @@ export default function IntegrationsPage() {
         <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
           {/* Search Bar */}
           <div className="relative w-full lg:w-96 flex-shrink-0">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b7280]" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-[#6b7280]" />
             <input
               type="text"
               placeholder="Search applications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#141414] text-white placeholder-[#6b7280] pl-12 pr-4 py-3 rounded-full outline-none  transition-all duration-150 ease-in-out text-[18px]"
+              className="w-full bg-white dark:bg-[#141414] border border-gray-200 dark:border-transparent focus:border-blue-500 dark:focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-[#6b7280] pl-12 pr-4 py-3 rounded-full outline-none transition-all duration-150 ease-in-out text-[16px] md:text-[18px] shadow-sm dark:shadow-none"
             />
           </div>
 
@@ -369,10 +369,10 @@ export default function IntegrationsPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat as Category | "All")}
-                className={`px-5 py-2.5 rounded-full text-[14px]  whitespace-nowrap transition-colors duration-150 ease-in-out flex-shrink-0  ${
+                className={`px-5 py-2.5 rounded-full text-[14px] whitespace-nowrap transition-colors duration-150 ease-in-out flex-shrink-0 border ${
                   activeCategory === cat
-                    ? "bg-blue-800 font-bold text-white"
-                    : "bg-[#141414] font-medium  text-white"
+                    ? "bg-blue-600 dark:bg-blue-800 font-bold text-white border-blue-600 dark:border-blue-800 shadow-sm"
+                    : "bg-white dark:bg-[#141414] font-medium text-gray-700 dark:text-white border-gray-200 dark:border-transparent hover:bg-gray-100 dark:hover:bg-[#1c1c1c]"
                 }`}
               >
                 {cat}
@@ -383,14 +383,14 @@ export default function IntegrationsPage() {
 
         {/* ── RESULTS GRID ── */}
         {filteredApps.length === 0 ? (
-          <div className="py-24 px-6   text-center flex flex-col items-center justify-center w-full">
-            <div className="w-14 h-14 bg-[#141414] rounded-full flex items-center justify-center mb-5 text-[#6b7280]">
-              <Search className="w-7 h-7 text-white" />
+          <div className="py-24 px-6 text-center flex flex-col items-center justify-center w-full">
+            <div className="w-14 h-14 bg-gray-200 dark:bg-[#141414] rounded-full flex items-center justify-center mb-5 text-gray-500 dark:text-[#6b7280] transition-colors">
+              <Search className="w-7 h-7 text-gray-600 dark:text-white" />
             </div>
-            <p className="text-[#F3F4F6] font-medium text-xl">
+            <p className="text-gray-900 dark:text-[#F3F4F6] font-bold text-xl">
               No services found
             </p>
-            <p className="text-[#a0a6b8] text-[15px] mt-1">
+            <p className="text-gray-500 dark:text-[#a0a6b8] text-[15px] mt-2 font-medium">
               Try adjusting your search or category filter.
             </p>
           </div>
@@ -401,16 +401,16 @@ export default function IntegrationsPage() {
               return (
                 <div
                   key={app.id}
-                  className="group flex flex-col items-center justify-center gap-4 p-5 bg-[#141414]  transition-all duration-150 ease-in-out rounded-4xl cursor-default"
+                  className="group flex flex-col items-center justify-center gap-4 p-5 bg-white dark:bg-[#141414] border border-gray-200 dark:border-[#282A2C] hover:border-gray-300 dark:hover:bg-[#1a1a1a] shadow-sm dark:shadow-none hover:shadow-md dark:hover:shadow-none transition-all duration-150 ease-in-out rounded-[28px] cursor-default"
                 >
-                  <div className="w-14 h-14   rounded-full flex items-center justify-center transition-colors duration-150">
-                    <Icon className="w-10 h-10 text-white transition-colors duration-150" />
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-150">
+                    <Icon className="w-10 h-10 text-gray-800 dark:text-white transition-colors duration-150" />
                   </div>
                   <div className="text-center space-y-1">
-                    <h3 className="text-[#F3F4F6] text-[15px] font-semibold tracking-tight">
+                    <h3 className="text-gray-900 dark:text-[#F3F4F6] text-[15px] font-bold tracking-tight">
                       {app.name}
                     </h3>
-                    <p className="text-[#6b7280] text-[11px] uppercase tracking-wide font-medium">
+                    <p className="text-gray-500 dark:text-[#6b7280] text-[11px] uppercase tracking-wide font-bold">
                       {app.category.split("&")[0].trim()}
                     </p>
                   </div>
@@ -421,8 +421,8 @@ export default function IntegrationsPage() {
         )}
 
         {/* ── FOOTER NOTE ── */}
-        <div className="pt-10 text-center border-t border-[#2e3447]">
-          <p className="text-[#6b7280] text-[14px]">
+        <div className="pt-10 text-center border-t border-gray-200 dark:border-[#2e3447] transition-colors">
+          <p className="text-gray-500 dark:text-[#6b7280] text-[14px] font-medium">
             Vault26 supports custom entries for any URL or platform. The
             services listed above feature verified metadata mapping.
           </p>

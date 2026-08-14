@@ -9,10 +9,10 @@ import {
   LockKeyhole,
   ShieldCheck,
   Zap,
-  Sparkles,
   KeyRound,
   Eye,
   EyeOff,
+  AlertTriangle,
 } from "lucide-react";
 
 const APP_NAME = "Opaque";
@@ -37,15 +37,15 @@ function BenefitItem({
   description: string;
 }) {
   return (
-    <div className="flex items-start gap-3 p-1  transition-colors">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-400 flex items-center justify-center text-black shadow-sm">
+    <div className="flex items-start gap-4 p-2 transition-colors">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 dark:bg-green-400 flex items-center justify-center text-green-700 dark:text-black shadow-sm">
         {icon}
       </div>
       <div>
-        <h3 className="text-[#E2E2E2] font-semibold text-[20px] mb-1.5">
+        <h3 className="text-gray-900 dark:text-[#E2E2E2] font-bold text-[19px] mb-1.5">
           {title}
         </h3>
-        <p className="text-zinc-200 text-[17px] font-normal leading-relaxed">
+        <p className="text-gray-600 dark:text-zinc-300 text-[16px] font-medium leading-relaxed">
           {description}
         </p>
       </div>
@@ -271,26 +271,29 @@ export default function AuthPage() {
         ? !!(email && password && firstName && lastName)
         : !!(email && password);
 
-  // Material You Styling Variables
+  // Material You / Professional Styling Variables
   const inputClass =
-    "w-full px-6 py-2.5 bg-[#121212]  border-2 border-[#444444] text-[14px] text-white placeholder-[#8E918F] outline-none rounded-md ";
-  const labelClass = "block text-[16px] font-bold text-white mb-2 pl-4";
+    "w-full px-5 py-3.5 bg-gray-50 dark:bg-[#121212] border border-gray-200 dark:border-transparent focus:border-blue-500 dark:focus:border-[#282A2C] transition-colors text-[16px] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-[#8E918F] outline-none rounded-2xl shadow-sm dark:shadow-none font-medium";
+  const labelClass =
+    "block text-[15px] font-bold text-gray-800 dark:text-white mb-2 pl-2 tracking-wide";
+
   const primaryButtonClass =
-    "w-full flex items-center justify-center gap-2 py-2 px-5 font-semibold text-[18px] bg-blue-800 hover:bg-blue-800 text-white rounded-full  cursor-pointer transition-all  disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100";
+    "w-full flex items-center justify-center gap-2 py-3.5 px-5 font-bold text-[17px] bg-blue-600 hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-700 text-white rounded-2xl cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 shadow-md active:scale-[0.98]";
+
   const secondaryButtonClass =
-    "w-full flex items-center justify-center gap-2 py-2 px-3  font-medium text-[17px] cursor-pointer bg-[#252525] text-white rounded-full transition-all active:scale-95 disabled:opacity-50";
+    "w-full flex items-center justify-center gap-2 py-3.5 px-5 font-semibold text-[16px] cursor-pointer bg-white hover:bg-gray-50 dark:bg-[#1a1a1a] dark:hover:bg-[#252525] text-gray-800 dark:text-white border border-gray-200 dark:border-transparent rounded-2xl transition-all active:scale-[0.98] disabled:opacity-50 shadow-sm";
 
   return (
-    <div className="grid pt-0 lg:pt-16 min-h-screen pt-20 grid-cols-1 lg:grid-cols-2 bg-black text-[#E2E2E2] selection:bg-[#A8C7FA] selection:text-[#041E49] ">
+    <div className="grid min-h-screen pt-[72px] grid-cols-1 lg:grid-cols-2 bg-white dark:bg-black text-gray-900 dark:text-[#E2E2E2] selection:bg-blue-200 dark:selection:bg-[#A8C7FA] selection:text-blue-900 dark:selection:text-[#041E49] transition-colors duration-300">
       {/* LEFT PANEL: Branding & Benefits */}
-      <div className="relative hidden lg:flex flex-col justify-between rounded-l-3xl shadow-md shadow-blue-400 p-12 xl:p-16 bg-[#141414]  overflow-hidden my-4 ml-4 ">
+      <div className="relative hidden lg:flex flex-col justify-between rounded-3xl border border-gray-200 dark:border-transparent shadow-xl dark:shadow-md shadow-blue-100/50 dark:shadow-blue-400/10 p-12 xl:p-16 bg-gray-50 dark:bg-[#101010] overflow-hidden my-4 ml-4 transition-colors duration-300">
         <div className="relative z-10 flex flex-col gap-10">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-medium tracking-tight text-[#E2E2E2] flex items-center flex-wrap gap-3">
+            <span className="text-2xl font-bold tracking-tight text-gray-900 dark:text-[#E2E2E2] flex items-center flex-wrap gap-3">
               {APP_NAME}
-              <span className="text-gray-600">{"/"}</span>
-              <span className="text-[16px] font-medium px-4 py-1.5  text-[#A8C7FA] border border-[#282A2C] rounded-full">
+              <span className="text-gray-300 dark:text-gray-700">/</span>
+              <span className="text-[14px] font-bold px-4 py-1.5 text-blue-700 dark:text-[#A8C7FA] bg-blue-100 dark:bg-transparent border border-blue-200 dark:border-[#282A2C] rounded-full uppercase tracking-wider">
                 Authentication
               </span>
             </span>
@@ -298,13 +301,13 @@ export default function AuthPage() {
 
           {/* Value Proposition */}
           <div className="mt-4">
-            <h1 className="text-3xl xl:text-4xl font-semibold mb-6 leading-tight max-w-[480px] ">
+            <h1 className="text-3xl xl:text-4xl font-extrabold mb-6 leading-tight max-w-[480px] text-gray-900 dark:text-white">
               Your passwords, sealed by encryption only you can open.
             </h1>
           </div>
 
           {/* Benefits List */}
-          <div className="space-y-2 mt-4 max-w-md -ml-4">
+          <div className="space-y-4 mt-2 max-w-md -ml-2">
             <BenefitItem
               icon={<ShieldCheck className="w-6 h-6" />}
               title="Zero-Knowledge Encryption"
@@ -325,12 +328,12 @@ export default function AuthPage() {
 
         {/* Dynamic Security Badge */}
         <div className="relative z-10 flex items-center gap-2 mt-auto pt-10">
-          <div className="flex items-center gap-2 text-[16px] text-[#C4C7C5] bg-yellow-500 border-2 border-black px-5 py-2.5 rounded-full">
-            <LockKeyhole className="w-6 h-6 text-black" />
-            <span className="text-black font-medium">
+          <div className="flex items-center gap-3 text-[15px] bg-yellow-400 dark:bg-yellow-500 border-2 border-black px-6 py-3 rounded-full shadow-md">
+            <LockKeyhole className="w-5 h-5 text-black" />
+            <span className="text-black font-bold tracking-wide">
               Secured infrastructure by
             </span>
-            <div className="relative flex items-center justify-start w-[50px] h-[20px] overflow-hidden font-bold text-black">
+            <div className="relative flex items-center justify-start w-[50px] h-[20px] overflow-hidden font-extrabold text-black">
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={providers[index]}
@@ -349,15 +352,15 @@ export default function AuthPage() {
       </div>
 
       {/* RIGHT PANEL: Authentication Form */}
-      <div className="flex flex-col justify-center items-center w-full px-6 py-12 lg:px-12 bg-black">
+      <div className="flex flex-col justify-center items-center w-full px-6 py-12 lg:px-12 bg-white dark:bg-black transition-colors duration-300">
         <div className="w-full max-w-[420px]">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex items-center justify-center gap-3 mb-12">
-            <span className="text-3xl font-medium tracking-tight text-[#E2E2E2] flex items-center gap-3">
+          <div className="lg:hidden flex items-center justify-center gap-3 mb-10">
+            <span className="text-3xl font-bold tracking-tight text-gray-900 dark:text-[#E2E2E2] flex items-center gap-3">
               {APP_NAME}
-              <span className="text-gray-600">{"/"}</span>
-              <span className="text-[17px] font-semibold px-4 py-1.5  text-[#A8C7FA] border border-[#282A2C] rounded-full">
-                Authentication
+              <span className="text-gray-300 dark:text-gray-700">/</span>
+              <span className="text-[14px] font-bold px-4 py-1 text-blue-700 dark:text-[#A8C7FA] bg-blue-50 dark:bg-transparent border border-blue-200 dark:border-[#282A2C] rounded-full uppercase tracking-wider">
+                Auth
               </span>
             </span>
           </div>
@@ -366,13 +369,13 @@ export default function AuthPage() {
           <motion.div layout className="mb-10 text-center sm:text-left">
             <motion.h2
               layout
-              className="text-2xl font-bold text-[#E2E2E2] mb-3"
+              className="text-3xl font-extrabold text-gray-900 dark:text-[#E2E2E2] mb-3"
             >
               {heading}
             </motion.h2>
             <motion.p
               layout
-              className="text-[17px] text-green-400 leading-relaxed"
+              className="text-[16px] font-medium text-green-700 dark:text-green-400 leading-relaxed"
             >
               {subtext}
             </motion.p>
@@ -386,12 +389,12 @@ export default function AuthPage() {
                 initial={{ opacity: 0, scale: 0.95, y: -10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, height: 0, marginBottom: 0 }}
-                className="mb-6 p-3  rounded-full flex items-start gap-3"
+                className="mb-8 p-4 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 rounded-2xl flex items-start gap-3 shadow-sm"
               >
-                <div className="mt-0.5 text-blue-400 flex-shrink-0">
-                  <Sparkles className="w-6 h-6" />
+                <div className="mt-0.5 text-red-600 dark:text-red-400 flex-shrink-0">
+                  <AlertTriangle className="w-5 h-5" />
                 </div>
-                <p className="text-[15px] font-medium text-white leading-snug">
+                <p className="text-[15px] font-semibold text-red-800 dark:text-red-200 leading-snug">
                   {authError}
                 </p>
               </motion.div>
@@ -399,7 +402,7 @@ export default function AuthPage() {
           </AnimatePresence>
 
           {/* Main Form container */}
-          <motion.div layout className="space-y-5">
+          <motion.div layout className="space-y-6">
             <AnimatePresence mode="wait">
               {pendingMfa || pendingVerification ? (
                 <motion.div
@@ -427,7 +430,7 @@ export default function AuthPage() {
                       onKeyDown={(e) =>
                         e.key === "Enter" && canSubmit && handleSubmit()
                       }
-                      className={`${inputClass} text-center text-3xl tracking-[0.5em] py-5 `}
+                      className={`${inputClass} text-center text-4xl tracking-[0.4em] py-6 font-bold`}
                     />
                   </div>
 
@@ -440,7 +443,7 @@ export default function AuthPage() {
                       {loading ? (
                         <FaSpinner className="animate-spin w-5 h-5" />
                       ) : (
-                        "Verify"
+                        "Verify Code"
                       )}
                     </button>
 
@@ -452,7 +455,7 @@ export default function AuthPage() {
                         setMfaCode("");
                         setAuthError(null);
                       }}
-                      className="w-full text-center text-[16px] font-semibold text-black bg-green-400 py-2 rounded-2xl cursor-pointer transition-colors active:bg-[#282A2C]"
+                      className="w-full text-center text-[16px] font-bold text-gray-700 dark:text-black bg-gray-200 hover:bg-gray-300 dark:bg-gray-300 dark:hover:bg-white py-3.5 rounded-2xl cursor-pointer transition-colors active:scale-[0.98]"
                     >
                       Cancel and go back
                     </button>
@@ -472,7 +475,7 @@ export default function AuthPage() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-5 overflow-hidden"
                     >
                       <div>
                         <label className={labelClass}>First Name</label>
@@ -510,7 +513,7 @@ export default function AuthPage() {
                   </div>
 
                   <div>
-                    <label className={labelClass}>Password</label>
+                    <label className={labelClass}>Master Password</label>
                     <div className="relative">
                       <input
                         type={showPassword ? "text" : "password"}
@@ -522,7 +525,7 @@ export default function AuthPage() {
                         onKeyDown={(e) =>
                           e.key === "Enter" && canSubmit && handleSubmit()
                         }
-                        className={`${inputClass} pr-14 ${!showPassword && password ? "tracking-[0.25em]  text-lg" : ""}`}
+                        className={`${inputClass} pr-14 ${!showPassword && password ? "tracking-[0.25em] text-lg font-bold" : ""}`}
                         placeholder={
                           !showPassword ? "••••••••" : "Your password"
                         }
@@ -534,7 +537,7 @@ export default function AuthPage() {
                         aria-label={
                           showPassword ? "Hide password" : "Show password"
                         }
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-[#8E918F] hover:text-[#E2E2E2] hover:bg-[#282A2C] transition-colors"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-xl text-gray-400 dark:text-[#8E918F] hover:text-gray-900 dark:hover:text-[#E2E2E2] hover:bg-gray-200 dark:hover:bg-[#282A2C] transition-colors"
                       >
                         {showPassword ? (
                           <EyeOff className="w-5 h-5" />
@@ -552,7 +555,7 @@ export default function AuthPage() {
                     className="pt-1"
                   />
 
-                  <div className="pt-2 space-y-2">
+                  <div className="pt-4 space-y-4">
                     <button
                       onClick={handleSubmit}
                       disabled={loading || !canSubmit}
@@ -561,15 +564,17 @@ export default function AuthPage() {
                       {loading ? (
                         <FaSpinner className="animate-spin w-5 h-5" />
                       ) : isSignUp ? (
-                        "Create Account"
+                        "Create Secure Account"
                       ) : (
-                        "Log In"
+                        "Unlock Vault"
                       )}
                     </button>
 
                     <div className="relative flex items-center justify-center py-2">
-                      <div className="absolute inset-0 flex items-center"></div>
-                      <div className="relative   text-[19px] font-bold text-white  tracking-wider">
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
+                      </div>
+                      <div className="relative px-4 bg-white dark:bg-black text-[14px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
                         or
                       </div>
                     </div>
@@ -591,19 +596,19 @@ export default function AuthPage() {
           {/* Footer Terms */}
           <motion.div
             layout
-            className="mt-10 text-center text-[14px] text-[#8E918F] leading-relaxed px-4"
+            className="mt-12 text-center text-[13px] font-medium text-gray-500 dark:text-[#8E918F] leading-relaxed px-4"
           >
             By continuing, you agree to our{" "}
             <Link
               href="/terms"
-              className="text-[#C4C7C5] hover:text-[#E2E2E2] transition-colors underline decoration-[#282A2C] hover:decoration-[#A8C7FA] underline-offset-4"
+              className="text-gray-700 dark:text-[#C4C7C5] hover:text-black dark:hover:text-[#E2E2E2] transition-colors underline decoration-gray-300 dark:decoration-[#282A2C] hover:decoration-blue-400 dark:hover:decoration-[#A8C7FA] underline-offset-4"
             >
               Terms of Service
             </Link>{" "}
             and{" "}
             <Link
               href="/privacy"
-              className="text-[#C4C7C5] hover:text-[#E2E2E2] transition-colors underline decoration-[#282A2C] hover:decoration-[#A8C7FA] underline-offset-4"
+              className="text-gray-700 dark:text-[#C4C7C5] hover:text-black dark:hover:text-[#E2E2E2] transition-colors underline decoration-gray-300 dark:decoration-[#282A2C] hover:decoration-blue-400 dark:hover:decoration-[#A8C7FA] underline-offset-4"
             >
               Privacy Policy
             </Link>

@@ -19,12 +19,12 @@ export default function UserProfileDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  /* ── Opaque Styled Menu Items ── */
+  /* ── Light & Dark Mode Styled Menu Items ── */
   const menuItemClass =
-    "group w-full flex items-center gap-3 py-3 px-3 text-[14px] font-medium text-white hover:bg-[#242836] transition-all duration-200 outline-none active:scale-[0.98] rounded-xl cursor-pointer";
+    "group w-full flex items-center gap-3 py-3 px-3 text-[14px] font-medium text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-black transition-all duration-200 outline-none active:scale-[0.98] rounded-full cursor-pointer";
 
   const dangerMenuItemClass =
-    "group w-full flex items-center gap-3 py-3 px-3 text-[14px] font-medium text-red-500 hover:bg-red-500/10 transition-all duration-200 outline-none active:scale-[0.98] rounded-xl cursor-pointer";
+    "group w-full flex items-center gap-3 py-3 px-3 text-[14px] font-medium text-red-600 dark:text-white hover:bg-red-50 dark:hover:bg-red-600 transition-all duration-200 outline-none active:scale-[0.98] rounded-full cursor-pointer";
 
   /* ── Outside click (desktop) ── */
   useEffect(() => {
@@ -87,13 +87,13 @@ export default function UserProfileDropdown({
             width={size}
             height={size}
             unoptimized
-            className="object-cover rounded-full border border-[#282A2C] bg-[#161923]"
+            className="object-cover rounded-full border border-gray-200 dark:border-[#282A2C] bg-gray-100 dark:bg-[#161923]"
             style={{ width: size, height: size }}
             referrerPolicy="no-referrer"
           />
         ) : (
           <span
-            className="bg-[#242836] border border-[#282A2C] text-white font-semibold flex items-center justify-center rounded-full"
+            className="bg-gray-200 dark:bg-[#242836] border border-gray-300 dark:border-[#282A2C] text-gray-700 dark:text-white font-semibold flex items-center justify-center rounded-full"
             style={{
               width: size,
               height: size,
@@ -124,18 +124,18 @@ export default function UserProfileDropdown({
         >
           {renderAvatar(42)}
           <div className="min-w-0 flex-1 text-left flex flex-col justify-center">
-            <p className="text-[15px] font-semibold text-white truncate">
+            <p className="text-[15px] font-semibold text-black dark:text-white truncate">
               {displayName}
             </p>
             {email && (
-              <p className="text-[12px] text-gray-400 font-medium truncate mt-0.5">
+              <p className="text-[12px] text-gray-500 dark:text-gray-400 font-medium truncate mt-0.5">
                 {email}
               </p>
             )}
           </div>
-          <div className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full bg-[#161923] border border-[#282A2C]">
+          <div className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full bg-gray-100 dark:bg-[#161923] border border-gray-200 dark:border-[#282A2C]">
             <FiChevronDown
-              className={`w-4 h-4 text-green-500 transition-transform duration-300 ${
+              className={`w-4 h-4 text-gray-600 dark:text-gray-400 transition-transform duration-300 ${
                 isOpen ? "rotate-180" : ""
               }`}
             />
@@ -147,10 +147,10 @@ export default function UserProfileDropdown({
             isOpen ? "max-h-64 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
           }`}
         >
-          <div className="h-px bg-[#282A2C] w-full mb-2" />
+          <div className="h-px bg-gray-200 dark:bg-[#282A2C] w-full mb-2" />
           <div className="flex flex-col gap-1">
             <button onClick={handleManage} className={menuItemClass}>
-              <FiSettings className="w-[18px] h-[18px] shrink-0 text-green-500" />
+              <FiSettings className="w-[18px] h-[18px] shrink-0 text-gray-600 dark:text-gray-400" />
               <span>Account Settings</span>
             </button>
 
@@ -165,22 +165,24 @@ export default function UserProfileDropdown({
   }
 
   /* ─────────────────────────────────────────────
-     DESKTOP — Floating Opaque Styled Panel
+     DESKTOP — Floating Theme-Aware Panel
      ───────────────────────────────────────────── */
   return (
     <div className="relative antialiased" ref={dropdownRef}>
-      {/* Opaque Pill Trigger */}
+      {/* Pill Trigger */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full border border-[#282A2C] transition-all duration-200 cursor-pointer outline-none active:scale-95 ${
-          isOpen ? "bg-[#242836]" : "bg-[#1C1F2B] hover:bg-[#242836]"
+        className={`flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer outline-none active:scale-95 border ${
+          isOpen
+            ? "bg-gray-200 dark:bg-[#141414] border-gray-300 dark:border-[#282A2C]"
+            : "bg-gray-100 dark:bg-[#141414] hover:bg-gray-200 dark:hover:bg-[#202020] border-gray-200 dark:border-transparent"
         }`}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         {renderAvatar(28)}
         <FiChevronDown
-          className={`w-4 h-4 text-green-500 transition-transform duration-300 ${
+          className={`w-4 h-4 text-gray-600 dark:text-white transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -194,35 +196,35 @@ export default function UserProfileDropdown({
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="relative rounded-2xl bg-[#161923] border border-[#282A2C] shadow-2xl flex flex-col p-2 overflow-hidden">
+        <div className="relative rounded-4xl bg-white dark:bg-[#141414] shadow-xl dark:shadow-2xl border border-gray-200 dark:border-[#282A2C] flex flex-col p-2 overflow-hidden">
           {/* User Info Header Card */}
-          <div className="flex items-center gap-3 p-3 mb-2 rounded-xl bg-[#1C1F2B] border border-[#282A2C]">
+          <div className="flex items-center gap-3 p-3 mb-2 rounded-4xl bg-gray-50 dark:bg-[#121212] border border-gray-100 dark:border-transparent">
             {renderAvatar(48)}
             <div className="min-w-0 flex-1 flex flex-col justify-center">
-              <p className="text-[15px] font-semibold text-white truncate">
+              <p className="text-[15px] font-semibold text-black dark:text-white truncate">
                 {displayName}
               </p>
               {email && (
-                <p className="text-[12px] text-gray-400 font-medium truncate mt-0.5">
+                <p className="text-[12px] text-blue-600 dark:text-[#ff9100] font-medium truncate mt-0.5">
                   {email}
                 </p>
               )}
-              {/* Neon Green Active Status */}
-              <div className="inline-flex items-center gap-1.5 mt-2 px-2 py-0.5 rounded-md bg-green-500/10 border border-green-500/20 self-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-bold text-green-500 tracking-wider uppercase">
+              {/* Active Status Badge */}
+              <div className="inline-flex items-center gap-1.5 mt-2 px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-400 self-start">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-black animate-pulse" />
+                <span className="text-[12px] font-bold text-blue-800 dark:text-black tracking-wider">
                   Active
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="h-px bg-[#282A2C] w-full my-1" />
+          <div className="h-px bg-gray-100 dark:bg-[#141414] w-full my-1" />
 
           {/* Action Buttons */}
           <div className="flex flex-col gap-1 mt-1">
             <button onClick={handleManage} className={menuItemClass}>
-              <FiSettings className="w-[18px] h-[18px] shrink-0 text-green-500" />
+              <FiSettings className="w-[18px] h-[18px] shrink-0 text-gray-600 dark:text-gray-400" />
               <span className="flex-1 text-left">Account Settings</span>
             </button>
 
