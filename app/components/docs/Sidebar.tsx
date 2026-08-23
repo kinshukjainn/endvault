@@ -51,7 +51,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search docs"
-          className="w-full  rounded-full dark:bg-[#141414] bg-gray-300 placeholder-gray-800 dark:placeholder-gray-400 py-3 pl-8 pr-2 text-[15px] dark:text-white text-black  outline-none "
+          className="w-full   border-b-1 dark:border-[#444444] placeholder-gray-800 dark:placeholder-gray-400 py-1.5 pl-8 pr-2 text-[15px] dark:text-white text-black  outline-none "
         />
       </div>
 
@@ -63,7 +63,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             <div key={section.title}>
               <button
                 onClick={() => toggle(section.title)}
-                className="flex w-full items-center justify-between dark:bg-[#121212] bg-gray-300 px-2.5 py-1.5 rounded-full text-[15px] font-bold  tracking-wider dark:text-white text-black transition-colors  cursor-pointer"
+                className="flex w-full items-center justify-between  text-[15px] font-bold  tracking-wider dark:text-white text-black transition-colors  cursor-pointer"
               >
                 {section.title}
                 <svg
@@ -91,10 +91,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                           href={`/docs/${item.slug}`}
                           aria-current={active ? "page" : undefined}
                           onClick={onNavigate}
-                          className={`block  px-2.5 py-1.5 text-[16px] rounded-xl transition-colors ${
+                          className={`block  px-2.5 py-1.5 text-[16px]  transition-colors ${
                             active
-                              ? " p-2 border-l-15 dark:border-blue-400 dark:border-blue-800  font-semibold text-blue-800 dark:text-blue-200 "
-                              : "text-gray-900 dark:text-gray-200 dark:hover:text-white hover:font-bold"
+                              ? " p-2 border-l-2 dark:border-blue-400 dark:border-blue-800  font-medium text-blue-800 dark:text-blue-200 "
+                              : "text-gray-700 dark:text-gray-400 dark:hover:text-white hover:font-semibold"
                           }`}
                         >
                           {item.title}
@@ -147,11 +147,11 @@ export function MobileDocsNav() {
     <>
       {/* Sticky Mobile Header */}
       <div
-        className="sticky z-40 -mx-4 flex items-center justify-between   dark:bg-[#202020]/20 bg-white/20 backdrop-blur-xs  mr-2 ml-2 mt-2    rounded-full  px-4 py-2  sm:-mx-6 sm:px-6 md:hidden"
+        className="sticky z-40 -mx-4 flex items-center justify-between   dark:bg-[#202020]/40 bg-white/20 backdrop-blur-xs  mr-2 ml-2 mt-2    rounded-full  px-4 py-2  sm:-mx-6 sm:px-6 md:hidden"
         style={{ top: "var(--header-h)" }}
       >
         <span className="text-lg font-semibold text-neutral-900 dark:text-white">
-          Opaque Documentation/Blogs
+          Opaque Docs
         </span>
         <button
           onClick={() => setIsOpen(true)}
